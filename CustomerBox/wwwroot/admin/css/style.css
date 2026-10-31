@@ -1,0 +1,182 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+    header .header-wrapper {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header .menu-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+        header .menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+            header .menu-btn svg:hover {
+                fill: red;
+            }
+
+    /* header menu */
+
+    header .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 22%;
+        background-color: #343a40;
+        color: white;
+        padding: 0 12px 24px 12px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #888 transparent;
+        z-index: 10000;
+        display: none;
+    }
+
+        header .menu.active {
+            display: block;
+        }
+
+        header .menu .menu-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+            padding: 16px 0;
+        }
+
+            header .menu .menu-head .menu-title {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            header .menu .menu-head svg {
+                height: 18px;
+                width: 18px;
+                cursor: pointer;
+                fill: white;
+            }
+
+                header .menu .menu-head svg:hover {
+                    fill: red;
+                }
+
+        header .menu .menu-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+            header .menu .menu-list a {
+                width: 100%;
+                padding: 8px 0;
+                text-decoration: none;
+                color: white;
+            }
+
+                header .menu .menu-list a:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                    padding: 8px;
+                }
+
+            /* Dropdown */
+            header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-btn {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 0;
+                border: none;
+                background: none;
+                color: white;
+                cursor: pointer;
+                text-align: left;
+                font-size: 16px;
+            }
+
+                header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-btn .arrow-icon {
+                    width: 18px;
+                    height: 18px;
+                    transition: transform 0.3s ease;
+                }
+
+                header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-btn.active .arrow-icon {
+                    transform: rotate(180deg);
+                }
+
+                header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-btn:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                    padding: 8px;
+                }
+
+            header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-menu {
+                display: none;
+                flex-direction: column;
+                padding: 8px 20px;
+                background-color: black;
+            }
+
+                header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-menu.open {
+                    display: flex;
+                }
+
+                header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-menu a {
+                    display: block;
+                    padding: 10px 8px;
+                    color: white;
+                    text-decoration: none;
+                    font-size: 14px;
+                }
+
+                    header .menu .menu-list .sidebar-dropdown .sidebar-dropdown-menu a:hover {
+                        background-color: rgba(255, 255, 255, 0.15);
+                    }
+
+
+
+@media screen and (max-width:1110px) {
+    header .menu {
+        width: 33%;
+        z-index: 1000;
+    }
+}
+
+@media screen and (max-width:768px) {
+    header .menu {
+        width: 100%;
+        z-index: 1000;
+    }
+}
+
+header .user-menu .fa-user {
+    font-size: 20px;
+}
+
+header .user-menu a:hover {
+    color: red !important;
+}
+
+
+
+header .user-menu .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Main */
