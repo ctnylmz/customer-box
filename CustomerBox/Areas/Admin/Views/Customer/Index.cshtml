@@ -1,0 +1,71 @@
+﻿@model List<Customer>
+
+<div class="container">
+
+    @if (TempData["Message"] != null)
+    {
+        <div id="successMessage" class="alert alert-success fw-semibold my-4" role="alert">
+            <i class="fas fa-check-circle me-2"></i>
+            @TempData["Message"]
+        </div>
+    }
+
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-white py-3">
+            <h6 class="mb-0">Customer List</h6>
+        </div>
+
+        <div class="card-body">
+            <a asp-action="Add" class="btn btn-outline-success w-100 mb-3">
+                <i class="fas fa-plus me-2"></i>Customer Add
+            </a>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col" class="text-end">Settings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@(item.FullName.Length > 30 ? item.FullName.Substring(0, 30) + "..." : item.FullName)</td>
+                                <td>@(item.Description.Length > 30 ? item.Description.Substring(0, 30) + "..." : item.Description)</td>
+                                <td class="text-end">
+                                    <div class="btn-group" role="group">
+
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm" title="Düzenle">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Silmek istediğinize emin misiniz?')">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" title="Sil">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        const message = document.getElementById('successMessage');
+        if (message) {
+            message.classList.add('fade');
+            message.classList.remove('show');
+            setTimeout(() => message.remove(), 500);
+        }
+    }, 7000);
+</script>
